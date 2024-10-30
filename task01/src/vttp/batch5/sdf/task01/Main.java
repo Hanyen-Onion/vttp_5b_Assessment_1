@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
-import vttp.batch5.sdf.task01.models.BikeEntry;
-
 public class Main {
    public Main() {
    }
+
+   // @Override
+   // public String toString() {
+   //     return "The " + position + "recorded number of cyclists was in "+ season +", on a " + weekday + "in the month of " + month +".\n" 
+   //     + "There were a total of " + getTotal() + "cyclists. The weather was "+ weather + ".\n" + weekday + "was " + holiday ;
+   // }
 
    public static String[] parseLine(String line) {
       ArrayList<String> result = new ArrayList<>();
@@ -43,13 +46,14 @@ public class Main {
 	//System.out.println(headers[0]);
 	
       //where each col is a list of values 
+      //then assign to bike entry with set bike entry
 	  
       while (null != line) {
          line = br.readLine();
       }
       String checkOccur = line.trim();
 
-      //need to add casual + registered
+      //need to add casual + registered to count for total
       for (String noOfCyclist: checkOccur.split(",")) {
          int currentCount = 0;
          if (myBE.containsKey(noOfCyclist)) 
@@ -60,7 +64,6 @@ public class Main {
       }
 
          
-      
       
       while((line = br.readLine()) != null) {
             String[] values = parseLine(line);

@@ -42,7 +42,6 @@ public class TicTacToe {
                 y++;
             }
         }
-
     }
 
     public TicTacToe nextMove() {
@@ -63,8 +62,6 @@ public class TicTacToe {
         }
         return nextMove();
     }
-
-    
 
     public int evaluateBoard() {
         //check for row win
