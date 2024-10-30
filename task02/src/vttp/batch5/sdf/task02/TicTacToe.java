@@ -2,6 +2,7 @@ package vttp.batch5.sdf.task02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 
 public class TicTacToe {
 
@@ -49,14 +50,21 @@ public class TicTacToe {
         for (int r = 0; r < width; r++) {
             for (int c = 0; c < width; c++) {
                 if(board[r][c] == GamePiece.EMPTY_T) {
-                    
-                } 
-                    
-                
+                    evaluateBoard();
+                    if (evaluateBoard()==1) {
+                        System.out.printf("y=%d, x=%d, utility=1\n", r,c);
+                        //play move
+                        //setPieceAt(GamePiece.X, r, c);  
+                    } else if (evaluateBoard()==0) {
+                        System.out.printf("y=%d, x=%d, utility=0\n", r,c);
+                    } else System.out.printf("y=%d, x=%d, utility=-1\n", r,c);
+                }         
             }
         }
         return nextMove();
     }
+
+    
 
     public int evaluateBoard() {
         //check for row win
@@ -133,7 +141,6 @@ public class TicTacToe {
         }
         System.out.println("\n" + "-------------------------------");
 
-        //System.out.printf("y=%d, x=%d, utility=%d", y,x, evaluateBoard);
     }
 
     //getter setter
@@ -148,7 +155,7 @@ public class TicTacToe {
         return board;
     }
 
-    public char getPieceAt(int row, int col) {
-        return board[row][col];
+    public void setPieceAt(char x,int row, int col) {
+        this.board[row][col] = x;
     }
 }
